@@ -4,7 +4,7 @@ import LandingPage from "./Landing";
 
 function App() {
   return (
-	<React.Fragment class='bg-[#eee]'>
+	<React.Fragment>
 		<LandingPage />
 	</React.Fragment>
   );
