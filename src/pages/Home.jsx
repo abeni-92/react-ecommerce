@@ -1,9 +1,11 @@
 import Home1 from "/home1.jpeg";
 import Home2 from "/home2.webp";
 import Home3 from "/home3.webp";
+import { NavLink } from "react-router-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { SolidCircle } from "./svgs/solidCircle";
-import { OpenCircle } from "./svgs/openCircle";
+import { SolidCircle } from "../svgs/solidCircle";
+import { OpenCircle } from "../svgs/openCircle";
+import { fetchData } from "./Helper";
 
 const images = [Home1, Home2, Home3];
 
@@ -14,12 +16,6 @@ const Home = () => {
 
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-
-  const fetchData = async (url) => {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  };
 
   useEffect(() => {
     async function getProducts() {
@@ -136,7 +132,7 @@ const Home = () => {
           </div>
           <div className="text-center mt-8">
             <button className="py-2 px-6 rounded-md text-white bg-primary hover:bg-[#2a3750] hover:scale-105 transition-all duration-300 ease-in-out">
-              View All
+              <NavLink to="/shop">View All</NavLink>
             </button>
           </div>
         </div>
@@ -176,7 +172,7 @@ const Home = () => {
           empowering vari.0s artists and athletes.
         </p>
         <button className="bg-primary py-2 px-6 text-white rounded-lg mt-6 hover:bg-[#2a3750] hover:scale-105 transition-all duration-300 ease-in-out">
-          Get Your Choice
+          <NavLink to="/shop">Get Your Choice</NavLink>
         </button>
       </div>
     </section>
