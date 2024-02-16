@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "./Helper";
+import { FilterRemove } from "../svgs/FilterRemove";
+import { SearchIcon } from "../svgs/SearchIcon";
+import { NavLink } from "react-router-dom";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -85,30 +88,33 @@ const Shop = () => {
     setSearchItem(e.target.value);
   };
 
+  const removeFilter = () => {
+    setSearchItem("");
+    setSortOption("#");
+    setCategory("all");
+  };
+
   return (
-    <div>
-      <div className="flex items-center gap-12 bg-primary p-6 m-8 rounded-lg">
+    <>
+      <div className="flex items-center gap-8 bg-primary p-6 m-8 rounded-lg">
         <div className="relative flex-1">
           <input
             type="text"
             placeholder="search.."
             className="p-1 pl-8 w-full rounded-md"
             onChange={handleSearch}
+            value={searchItem}
           />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-            className="w-5 h-5 absolute top-2 left-2"
-          >
-            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-          </svg>
+          <SearchIcon />
         </div>
+        <FilterRemove onClick={removeFilter} />
         <div className="flex gap-4">
           <select
             name="category"
             id="category"
             className="p-1"
             onChange={handleCategory}
+            value={category}
           >
             <option value="all">All</option>
             {categories.map((category) => (
@@ -117,8 +123,16 @@ const Shop = () => {
               </option>
             ))}
           </select>
-          <select name="sort" id="sort" className="p-1" onChange={handleSort}>
-            <option value="#" selected>sort</option>     
+          <select
+            name="sort"
+            id="sort"
+            className="p-1"
+            onChange={handleSort}
+            value={sortOption}
+          >
+            <option value="#" selected>
+              sort
+            </option>
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
             <option value="lowest">Lowest(price)</option>
@@ -128,24 +142,23 @@ const Shop = () => {
       </div>
       <div className="grid grid-cols-4 gap-6 p-8">
         {filteredProducts.map((product) => (
-          <div
-            key={product.id}
-            className="bg-primary rounded-xl cursor-pointer shadow-md shadow-primary transition-all duration-500 ease-in-out hover:shadow-sm hover:scale-110"
-          >
-            <div className="">
-              <img
-                src={product.image}
-                className="object-fit rounded-xl h-80 w-full"
-              />
+          <NavLink to={`/product/${product.id}`} key={product.id}>
+            <div className="bg-primary rounded-xl cursor-pointer shadow-md shadow-primary transition-all duration-500 ease-in-out hover:shadow-sm hover:scale-110">
+              <div className="">
+                <img
+                  src={product.image}
+                  className="object-fit rounded-xl h-80 w-full"
+                />
+              </div>
+              <div className="text-center text-white p-2">
+                <h2>{product.title}</h2>
+                <h3>$ {product.price}</h3>
+              </div>
             </div>
-            <div className="text-center text-white p-2">
-              <h2>{product.title}</h2>
-              <h3>$ {product.price}</h3>
-            </div>
-          </div>
+          </NavLink>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

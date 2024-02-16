@@ -59,7 +59,12 @@ export const SideBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink href="#" className="flex gap-6 font-semibold">
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              "flex gap-6 font-semibold " + (isActive && "!text-orange-400")
+            }
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 576 512"

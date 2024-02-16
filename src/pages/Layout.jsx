@@ -1,7 +1,7 @@
 // import * as React from "react";
 
 import { Outlet } from "react-router";
-import { SideBar } from "./sideBar";
+import { SideBar } from "../components/SideBar";
 
 
 function Layout() {
@@ -12,7 +12,7 @@ function Layout() {
       <SideBar />
 
       {/* Main body */}
-      <section className="w-auto ml-80">
+      <section className="w-full ml-80">
         <Outlet />
       </section>
     </div>
