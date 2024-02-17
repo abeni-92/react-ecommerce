@@ -113,25 +113,25 @@ const Home = () => {
           <h2 className="text-center text-3xl font-bold my-4">New Drops</h2>
           <div className="grid grid-cols-4 gap-6 py-4">
             {products.map((product) => (
-              <div
-                key={product.id}
-                className="bg-primary rounded-xl cursor-pointer shadow-md shadow-primary transition-all duration-500 ease-in-out hover:shadow-sm hover:scale-110"
-              >
-                <div className="">
-                  <img
-                    src={product.image}
-                    className="object-fit rounded-xl h-96 w-full"
-                  />
+              <NavLink to={`/product/${product.id}`} key={product.id}>
+                {" "}
+                <div className="bg-primary rounded-xl cursor-pointer shadow-md shadow-primary transition-all duration-500 ease-in-out hover:shadow-sm hover:scale-110">
+                  <div className="">
+                    <img
+                      src={product.image}
+                      className="object-fit rounded-xl h-96 w-full"
+                    />
+                  </div>
+                  <div className="text-center text-white p-2">
+                    <h2>{product.title}</h2>
+                    <h3>$ {product.price}</h3>
+                  </div>
                 </div>
-                <div className="text-center text-white p-2">
-                  <h2>{product.title}</h2>
-                  <h3>$ {product.price}</h3>
-                </div>
-              </div>
+              </NavLink>
             ))}
           </div>
           <div className="text-center mt-8">
-            <button className="py-2 px-6 rounded-md text-white bg-primary hover:bg-[#2a3750] hover:scale-105 transition-all duration-300 ease-in-out">
+            <button className="py-2 px-6 rounded-md text-white bg-green-500 hover:bg-green-600 hover:scale-105 transition-all duration-300 ease-in-out">
               <NavLink to="/shop">View All</NavLink>
             </button>
           </div>
@@ -144,7 +144,7 @@ const Home = () => {
           {categories.map((category) => (
             <div
               key={category[0].id}
-              className="bg-primary rounded-xl cursor-pointer shadow-md shadow-primary transition-all duration-500 ease-in-out hover:shadow-sm hover:scale-110"
+              className="bg-primary rounded-xl cursor-pointer shadow-md shadow-primary"
             >
               <div className="">
                 <img
@@ -171,7 +171,7 @@ const Home = () => {
           Our aim is to build the biggest self-sustaining community by
           empowering vari.0s artists and athletes.
         </p>
-        <button className="bg-primary py-2 px-6 text-white rounded-lg mt-6 hover:bg-[#2a3750] hover:scale-105 transition-all duration-300 ease-in-out">
+        <button className="bg-green-500 py-2 px-6 text-white rounded-lg mt-6 hover:bg-green-600 hover:scale-105 transition-all duration-300 ease-in-out">
           <NavLink to="/shop">Get Your Choice</NavLink>
         </button>
       </div>

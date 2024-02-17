@@ -3,6 +3,7 @@ import { fetchData } from "./Helper";
 import { FilterRemove } from "../svgs/FilterRemove";
 import { SearchIcon } from "../svgs/SearchIcon";
 import { NavLink } from "react-router-dom";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -11,6 +12,7 @@ const Shop = () => {
   const [category, setCategory] = useState("all");
   const [sortOption, setSortOption] = useState("#");
   const [searchItem, setSearchItem] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function allProducts() {
@@ -26,8 +28,10 @@ const Shop = () => {
           );
         }
         setProducts([...products]);
+        setLoading(false);
       } catch (e) {
         console.error("Error: ", e);
+        setLoading(false);
       }
     }
 
@@ -93,6 +97,10 @@ const Shop = () => {
     setSortOption("#");
     setCategory("all");
   };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <>

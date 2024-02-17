@@ -1,11 +1,17 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
-const Product = () => {
+const Product = ({addToCart}) => {
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+
+  const handleQuantity = (e) => {
+    setQuantity(e.target.value)
+  }
 
   useEffect(() => {
     async function getProduct() {
@@ -21,6 +27,7 @@ const Product = () => {
     }
     getProduct();
   }, [id]);
+
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -31,7 +38,7 @@ const Product = () => {
         <img
           src={product.image}
           alt="product-image"
-          className="object-cover h-full w-full max-h-screen"
+          className="object-fit h-full w-full max-h-screen"
         />
       </div>
       <div className="w-1/2 flex flex-col gap-8">
@@ -42,10 +49,15 @@ const Product = () => {
         <h2 className="font-semibold text-2xl">$ {product.price}</h2>
         <input
           type="number"
-          defaultValue={1}
+          min="1"
+          value={quantity}
+          onChange={handleQuantity}
           className="p-1 rounded-md outline-none outline-slate-400 w-1/2"
         />
-        <button className="my-4 text-xl w-1/2 text-white bg-green-500 rounded font-bold py-4 outline-none hover:bg-green-600 transition-all ease-in-out">
+        <button
+          onClick={() => {addToCart(product, quantity)}}
+          className="my-4 text-xl w-1/2 text-white bg-green-500 rounded font-bold py-4 outline-none hover:bg-green-600 transition-all ease-in-out"
+        >
           Add to Cart
         </button>
         <h5 className="text-2xl font-semibold">Product Details</h5>
