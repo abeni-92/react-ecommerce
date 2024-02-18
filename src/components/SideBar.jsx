@@ -13,7 +13,7 @@ export const SideBar = ({ cartItems }) => {
         <img src={Logo} alt="Logo Image" className="w-16 h-16 object-cover" />
       </div>
       <ul className="flex flex-col mt-10 gap-10 text-white justify-center items-start">
-        <li>
+        {/* <li>
           <NavLink to="#" className="flex gap-6 font-semibold">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ export const SideBar = ({ cartItems }) => {
             </svg>
             Login
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink
             to="/"
@@ -76,7 +76,7 @@ export const SideBar = ({ cartItems }) => {
             Cart
             {cartItems.length > 0 && (
               <div className="relative">
-                <span className="absolute top-0 right-0 bg-red-500 text-white py-1 px-2 rounded-full -mt-5 ">
+                <span className="absolute top-0 right-0 bg-red-500 text-white py-1 px-3 rounded-full -mt-5 ">
                   {cartItems.length}
                 </span>
               </div>

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { SolidCircle } from "../svgs/SolidCircle";
 import { OpenCircle } from "../svgs/OpenCircle";
-import { fetchData } from "./Helper";
+import { fetchData } from "../components/Helper";
 
 const images = [Home1, Home2, Home3];
 

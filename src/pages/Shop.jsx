@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchData } from "./Helper";
+import { fetchData } from "../components/Helper";
 import { FilterRemove } from "../svgs/FilterRemove";
 import { SearchIcon } from "../svgs/SearchIcon";
 import { NavLink } from "react-router-dom";
