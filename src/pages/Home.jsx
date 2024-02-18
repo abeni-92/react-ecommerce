@@ -3,8 +3,8 @@ import Home2 from "/home2.webp";
 import Home3 from "/home3.webp";
 import { NavLink } from "react-router-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { SolidCircle } from "../svgs/SolidCircle";
-import { OpenCircle } from "../svgs/OpenCircle";
+import { SolidCircle } from "../svgs/solidCircle";
+import { OpenCircle } from "../svgs/openCircle";
 import { fetchData } from "../components/Helper";
 
 const images = [Home1, Home2, Home3];
