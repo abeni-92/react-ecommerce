@@ -34,7 +34,7 @@ export const Cart = ({ cartItems, handleMinus, handlePlus, handleRemove }) => {
       <ul className="p-10 w-full flex flex-col gap-8 ">
         {cartItems.map((item) => (
           <li key={item.id} className="">
-            <div className="w-full flex gap-4 items-center rounded-lg shadow-gray-700 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+            <div className="w-full flex gap-4 items-center rounded-lg shadow-gray-700 shadow-lg border-gray-700 bg-gray-800">
               <img
                 className="object-fit w-60 h-48"
                 src={item.image}
